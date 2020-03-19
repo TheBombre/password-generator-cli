@@ -30,6 +30,10 @@ parser.add_argument('-c', "--copy",
 parser.add_argument('-v', "--verbose",
                     help="print out what it going on",
                     action="store_true")
+
+parser.add_argument('-s', "--show-password",
+                    help="Show the password after generating it",
+                    action="store_true")
 args = parser.parse_args()
 
 password = ''
@@ -115,7 +119,8 @@ if args.copy:
     verbose_printer(verbose_val=verbose, message="Copying password to clipboard")
     pyperclip.copy(password)
 
-print("password: ", password)
-
+if args.show_password:
+    verbose_printer(verbose_val=verbose, message="Showing password")
+    print("Password: ", password)
 
 
